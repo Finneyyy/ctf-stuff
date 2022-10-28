@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blame</title>
+    <link rel="stylesheet" href="/static/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <p>If there is a bug in here, don't <i>blame</i> it on me!</p>
+        <form method="POST">
+            <input type="text" pattern="^https?://.*$" name="repo" placeholder="Repo URL" value="{{ repo }}">
+            <input type="text" name="opts" value="{{ ' '.join(opts) }}" placeholder="Options (optional)">
+            <div>{{ recaptcha }}</div>
+            <br>
+            <input type="submit" value="Blame 😈">
+        </form>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+        {% if blame %}
+        <code><pre>{{ blame }}</pre></code>
+        {% endif %}
+    </main>
+</body>
+</html>

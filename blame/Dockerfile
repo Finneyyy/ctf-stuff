@@ -1,4 +1,4 @@
-FROM alpine:3.16 as builder
+FROM alpine:3.17 as builder
 
 RUN apk add gcc musl-dev
 
@@ -6,7 +6,7 @@ WORKDIR /build
 ADD readflag.c .
 RUN gcc -o readflag -static readflag.c
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 RUN apk add python3 py3-pip git && \
     python3 -m pip install pipenv
